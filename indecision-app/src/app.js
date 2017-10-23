@@ -12,11 +12,16 @@ var template = (
     </div>
 );
 
+var user = {
+    name: 'Pasi',
+    age: 42,
+    location: 'Lempäälä'
+};
 var templateTwo = (
     <div>
-        <h1>Pasi</h1>
-        <p>Age: 42</p>
-        <p>Location: Lempäälä</p>
+        <h1>{user.name}</h1>
+        <p>Age: {user.age}</p>
+        <p>Location: {user.location}</p>
     </div>
 );
 
