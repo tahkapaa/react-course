@@ -28,8 +28,6 @@ const removeAll = () => {
 
 const appRoot = document.getElementById('app');
 
-const numbers = [23, 62, 1000];
-
 const renderTemplate = () => {
     const template = (
         <div>
@@ -38,15 +36,10 @@ const renderTemplate = () => {
             <p>{app.options && app.options.length > 0 ? 'Here are your options' : 'No options'}</p>
             <p>{app.options.length}</p>
             <button onClick={removeAll}>Remove All</button>
-            {
-                numbers.map((number) => {
-                    return <p key={number}>Number: {number}</p>;
-                })
-            }
             <ol>
                 {
-                    app.options.map((text) => {
-                        return <li key={text}>{text}</li>
+                    app.options.map((options) => {
+                        return <li key={options}>{options}</li>
                     })
                 }
             </ol>
