@@ -27,6 +27,15 @@ var render = function render() {
             'p',
             { hidden: !show },
             'Here are your details'
+        ),
+        show && React.createElement(
+            'div',
+            null,
+            React.createElement(
+                'p',
+                null,
+                'Hey. Some more details.'
+            )
         )
     );
     ReactDOM.render(template, appRoot);

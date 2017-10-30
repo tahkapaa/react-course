@@ -13,6 +13,11 @@ const render = () => {
             <h1>Visibility Toggle</h1>
             <button onClick={onToggle}>{show ? 'Hide details' : 'Show details'}</button>
             <p hidden={!show}>Here are your details</p>
+            {show && (
+                <div>
+                    <p>Hey. Some more details.</p>
+                </div>
+            )}
         </main>
     );
     ReactDOM.render(template, appRoot);
