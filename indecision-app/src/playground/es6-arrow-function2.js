@@ -23,7 +23,7 @@ const user = {
 
 console.log(user.printPlacesLived());
 
-// Challenge are
+// Challenge area
 
 const multiplier = {
     // numbers - array of number
