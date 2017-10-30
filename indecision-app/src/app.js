@@ -1,8 +1,5 @@
 console.log('app.js is running!');
 
-
-
-
 const app = {
     title: 'Indecision app',
     subtitle: 'Put your life in the hands of a computer',
