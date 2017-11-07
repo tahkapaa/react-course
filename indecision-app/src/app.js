@@ -7,18 +7,31 @@ class IndecisionApp extends React.Component {
         this.handleDeleteOption = this.handleDeleteOption.bind(this);
 
         this.state = {
-            options: props.options
+            options: []
         }
     }
 
 
     // React lifecycle methods
     componentDidMount() {
-        console.log('fetching data');
+        try {
+            const json = localStorage.getItem('options');
+            const options = JSON.parse(json);
+    
+            if (options) {
+                this.setState(() => ({ options }));
+            }
+        } catch (e) {
+            // Do nothing
+        }
     }
 
     componentDidUpdate(prevProps, prevState) {
-        console.log('saving data');
+        if (prevState.options.length !== this.state.options.length) {
+            const json = JSON.stringify(this.state.options);
+            localStorage.setItem('options', json);
+            console.log('saving data');
+        }
     }
 
     componentWillUnmount() {
@@ -74,11 +87,6 @@ class IndecisionApp extends React.Component {
     }
 }
 
-IndecisionApp.defaultProps = {
-    options: []
-};
-
-
 const Header = (props) => {
     return (
         <div>
@@ -114,6 +122,7 @@ const Options = (props) => {
             >
                 Remove all
             </button>
+            {props.options.length === 0 && <p>Please add an option to get started!</p>}
             {
                 props.options.map((option) => (
                     <Option 
@@ -164,6 +173,10 @@ class AddOption extends React.Component {
         //     return { error };
         // });
         this.setState(() => ({ error }));
+
+        if (!error) {
+            e.target.elements.option.value = '';
+        }
     }
 
     render() {
@@ -178,14 +191,5 @@ class AddOption extends React.Component {
         );
     }
 }
-
-// const User = (props) => {
-//     return (
-//         <div>
-//             <p>Name: {props.name}</p>
-//             <p>Age: {props.age}</p>
-//         </div>
-//     );
-// };
 
 ReactDOM.render(<IndecisionApp />, document.getElementById('app'));
