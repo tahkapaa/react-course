@@ -1,12 +1,12 @@
 import React from 'react';
-import {NavLink} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 const Portfolio = () => (
     <div>
         <h3>Items</h3>
-        <NavLink to="/portfolio/golang">Golang</NavLink>
-        <NavLink to="/portfolio/css">CSS</NavLink>
-        <NavLink to="/portfolio/react">React</NavLink>
+        <Link to="/portfolio/golang">Golang</Link>
+        <Link to="/portfolio/css">CSS</Link>
+        <Link to="/portfolio/react">React</Link>
     </div>
 );
 
