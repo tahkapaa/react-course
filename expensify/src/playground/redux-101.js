@@ -12,7 +12,7 @@ const setCount = ({count}) => ({type: 'SET', count});
 
 const resetCount = () => ({type: 'RESET'});
 
-const store = createStore((state = {
+const countReducer = (state = {
     count: 0
 }, action) => {
     switch (action.type) {
@@ -32,7 +32,9 @@ const store = createStore((state = {
             return state;
     }
     return state;
-});
+};
+
+const store = createStore(countReducer);
 
 const unsubscribe = store.subscribe(() => {
     console.log(store.getState());
