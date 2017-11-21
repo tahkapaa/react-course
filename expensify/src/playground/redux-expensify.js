@@ -53,6 +53,12 @@ const expensesReducer = (state = [], action) => {
 // SET_TEXT_FILTER
 const setTextFilter = (text = '') => ({type: 'SET_TEXT_FILTER', text});
 
+// SORT_BY_DATE
+const sortByDate = () => ({type: 'SORT_BY_DATE'});
+
+// SORT_BY_AMOUNT
+const sortByAmount = () => ({type: 'SORT_BY_AMOUNT'});
+
 const filtersReducerDefaultState = {
     text: '',
     sortBy: 'date',
@@ -63,10 +69,19 @@ const filtersReducerDefaultState = {
 const filtersReducer = (state = filtersReducerDefaultState, action) => {
     switch (action.type) {
         case 'SET_TEXT_FILTER':
-            console.log(action.text);
             return {
                 ...state,
                 text: action.text
+            };
+        case 'SORT_BY_DATE':
+            return {
+                ...state,
+                sortBy: 'date'
+            };
+        case 'SORT_BY_AMOUNT':
+            return {
+                ...state,
+                sortBy: 'amount'
             };
         default:
             return state;
@@ -86,6 +101,8 @@ store.dispatch(editExpense(expenseTwo.expense.id, {amount: 500}));
 
 store.dispatch(setTextFilter('rent'));
 store.dispatch(setTextFilter());
+store.dispatch(sortByAmount());
+store.dispatch(sortByDate());
 
 const demoState = {
     expenses: [
